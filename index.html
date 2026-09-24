@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SocialBoost BD — সোশ্যাল মিডিয়া প্রোমোশন সার্ভিস</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+:root{--bg:#0a0e17;--card:#131a2b;--card2:#182136;--line:rgba(255,255,255,.08);--txt:#e8edf7;--muted:#8b96ad;--pri:#7c5cff;--pri2:#00d4ff;--ok:#22c55e;--warn:#f59e0b;--danger:#ef4444;--radius:16px}
+body{font-family:'Hind Siliguri','Inter',system-ui,-apple-system,sans-serif;color:var(--txt);background:radial-gradient(1000px 520px at 8% -12%,rgba(124,92,255,.20),transparent 62%),radial-gradient(820px 500px at 92% -6%,rgba(0,212,255,.13),transparent 62%),var(--bg);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}img{max-width:100%}button{font-family:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.section{padding:52px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.section-head h2{font-size:26px;margin:0;font-weight:800;letter-spacing:-.3px}
+.section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pri2);background:rgba(0,212,255,.09);border:1px solid rgba(0,212,255,.22);padding:4px 12px;border-radius:999px;margin-bottom:12px}
+header.site{position:sticky;top:0;z-index:60;background:rgba(10,14,23,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;text-decoration:none;white-space:nowrap}
+.logo .mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px;background:linear-gradient(135deg,var(--pri),var(--pri2));box-shadow:0 6px 18px rgba(124,92,255,.4)}
+nav.links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;max-width:100%}
+nav.links::-webkit-scrollbar{display:none}
+nav.links a{padding:9px 14px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap;transition:.18s}
+nav.links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav.links a.active{color:#fff;background:rgba(124,92,255,.20);box-shadow:inset 0 0 0 1px rgba(124,92,255,.35)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.balance-chip{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.28);color:#7ee2a8;padding:7px 13px;border-radius:999px;white-space:nowrap}
+.user-menu{position:relative}
+.user-btn{display:flex;align-items:center;gap:9px;padding:6px 12px 6px 6px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);cursor:pointer;transition:.18s;color:var(--txt);font-weight:700;font-size:13px}
+.user-btn:hover{background:rgba(255,255,255,.10)}
+.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
+.user-drop{position:absolute;top:calc(100% + 10px);right:0;min-width:230px;background:linear-gradient(180deg,#151d30,#111828);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px;box-shadow:0 22px 50px rgba(0,0,0,.55);display:none;z-index:80;animation:pop .18s ease}
+.user-menu.open .user-drop{display:block}
+.user-drop .uh{padding:10px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.user-drop .uh b{display:block;font-size:14px}
+.user-drop .uh span{font-size:12.5px;color:var(--muted)}
+.user-drop a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;font-size:13.5px;cursor:pointer}
+.user-drop a:hover{background:rgba(255,255,255,.07);color:#fff}
+.user-drop a.danger{color:#ffa3a3}
+.user-drop a.danger:hover{background:rgba(239,68,68,.12)}
+.user-drop a .drop-badge{margin-left:auto;font-size:11px;padding:1px 8px;border-radius:999px;background:rgba(239,68,68,.2);color:#ffa3a3;font-weight:800}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;transition:.18s;white-space:nowrap}
+.btn:hover{background:rgba(255,255,255,.10);transform:translateY(-1px)}
+.btn-pri{background:linear-gradient(135deg,var(--pri),var(--pri2));border:none;color:#fff;box-shadow:0 10px 26px rgba(124,92,255,.35)}
+.btn-pri:hover{box-shadow:0 14px 34px rgba(124,92,255,.5)}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:10px}
+.btn-block{width:100%}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:56px 44px;background:radial-gradient(700px 340px at 88% 10%,rgba(0,212,255,.28),transparent 65%),linear-gradient(135deg,#2b1d6b 0%,#4318a8 45%,#0e2a63 100%);border:1px solid rgba(255,255,255,.10);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);background-size:26px 26px;opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:660px}
+.hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.15;margin:14px 0 14px;font-weight:800;letter-spacing:-.5px}
+.hero p{color:rgba(255,255,255,.80);font-size:16px;margin:0 0 26px;max-width:560px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+.hero-stats div b{display:block;font-size:22px;font-weight:800}
+.hero-stats div span{font-size:13px;color:rgba(255,255,255,.65)}
+.badge-pill{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+.grid{display:grid;gap:18px}
+.grid-3{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.grid-4{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.grid-5{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--radius);padding:22px;transition:.2s;position:relative;overflow:hidden}
+.card:hover{border-color:rgba(124,92,255,.42);transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.platform-card{display:flex;flex-direction:column;gap:12px;cursor:pointer;text-decoration:none}
+.platform-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:20px;font-weight:800;color:#fff}
+.platform-card h3{margin:0;font-size:16px;font-weight:700}
+.platform-card p{margin:0;font-size:13px;color:var(--muted)}
+.platform-card .arrow{margin-top:auto;color:var(--pri2);font-weight:700;font-size:13px}
+.service-card{display:flex;flex-direction:column;gap:12px}
+.service-card h3{margin:0;font-size:16.5px;font-weight:700}
+.service-card .desc{margin:0;font-size:13.5px;color:var(--muted);min-height:38px}
+.price-row{display:flex;align-items:baseline;gap:8px}
+.price-row .price{font-size:22px;font-weight:800;color:#fff}
+.price-row .from{font-size:12.5px;color:var(--muted)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.tag{background:rgba(255,255,255,.05);border:1px solid var(--line);padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.service-card .btn{margin-top:auto}
+.offer{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-radius:22px;padding:34px 36px;background:linear-gradient(120deg,#ff7a18 0%,#e0245e 55%,#7c5cff 100%);box-shadow:0 26px 60px rgba(224,36,94,.28)}
+.offer h3{margin:0 0 6px;font-size:24px;font-weight:800}
+.offer p{margin:0;color:rgba(255,255,255,.88);font-size:14.5px}
+.coupon{background:rgba(0,0,0,.28);border:1.5px dashed rgba(255,255,255,.55);padding:12px 22px;border-radius:14px;font-weight:800;letter-spacing:.14em;font-size:17px}
+.step-card{text-align:left}
+.step-num{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;background:rgba(124,92,255,.16);border:1px solid rgba(124,92,255,.35);color:#b9a8ff;margin-bottom:14px}
+.step-card h4{margin:0 0 6px;font-size:15.5px}
+.step-card p{margin:0;font-size:13.5px;color:var(--muted)}
+.notice{display:flex;gap:14px;align-items:flex-start;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.28);border-radius:14px;padding:16px 18px;font-size:13.5px;color:#f3d59a}
+.notice b{color:#ffd88a}
+.notice .ico{font-size:18px;line-height:1.2}
+.pay-box{background:linear-gradient(135deg,rgba(124,92,255,.14),rgba(0,212,255,.10));border:1px solid rgba(124,92,255,.35);border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.pay-box .lbl{font-size:12.5px;color:var(--muted);display:block;margin-bottom:2px}
+.pay-box .num{font-size:22px;font-weight:800;letter-spacing:.06em;color:#fff;font-family:'Inter',monospace}
+.pay-box .tagline{font-size:12.5px;color:#b9a8ff;font-weight:700}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-bottom:22px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;transition:.18s;display:flex;align-items:center;gap:8px}
+.tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+.tab.active{color:#fff;background:linear-gradient(135deg,rgba(124,92,255,.35),rgba(0,212,255,.20));border-color:rgba(124,92,255,.5)}
+.shell{display:grid;grid-template-columns:250px 1fr;gap:22px;align-items:start;padding:26px 0 60px}
+.side{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--radius);padding:14px;position:sticky;top:82px}
+.side h4{margin:6px 10px 12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.side a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;cursor:pointer;transition:.16s}
+.side a:hover{background:rgba(255,255,255,.06);color:#fff}
+.side a.active{background:rgba(124,92,255,.20);color:#fff;box-shadow:inset 0 0 0 1px rgba(124,92,255,.35)}
+.side a .ic{width:20px;text-align:center;font-size:15px}
+.side a .badge-num{margin-left:auto;font-size:11px;padding:1px 8px;border-radius:999px;background:rgba(239,68,68,.22);color:#ffa3a3;font-weight:800;animation:badgePulse 2s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{opacity:1}50%{opacity:.6}}
+.panel{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.panel-head h2{margin:0;font-size:20px;font-weight:800}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:22px}
+.stat{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat span{font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px}
+.stat b{font-size:22px;font-weight:800;letter-spacing:-.4px}
+.stat.g b{color:#7ee2a8}.stat.p b{color:#b9a8ff}.stat.w b{color:#ffd88a}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+th{text-align:left;padding:13px 16px;background:rgba(255,255,255,.045);color:var(--muted);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.05);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+.badge{display:inline-block;padding:3px 11px;border-radius:999px;font-size:11.5px;font-weight:700;border:1px solid transparent}
+.b-pending{background:rgba(245,158,11,.14);color:#ffd88a;border-color:rgba(245,158,11,.3)}
+.b-processing{background:rgba(0,212,255,.13);color:#7fe4ff;border-color:rgba(0,212,255,.3)}
+.b-completed,.b-active,.b-paid,.b-answered,.b-credit{background:rgba(34,197,94,.14);color:#7ee2a8;border-color:rgba(34,197,94,.3)}
+.b-cancelled,.b-inactive,.b-failed,.b-debit{background:rgba(239,68,68,.14);color:#ffa3a3;border-color:rgba(239,68,68,.3)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:7px}
+.input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.28);border:1px solid var(--line);color:var(--txt);font-family:inherit;font-size:14px;outline:none;transition:.16s}
+.input:focus,select:focus,textarea:focus{border-color:var(--pri);box-shadow:0 0 0 3px rgba(124,92,255,.18)}
+select option{background:#131a2b}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.input-icon{position:relative}
+.input-icon .input{padding-right:44px}
+.input-icon .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:var(--muted);cursor:pointer;padding:6px 10px;font-size:15px;border-radius:8px}
+.auth-modal{max-width:440px}
+.auth-head{padding:28px 28px 4px;text-align:center}
+.auth-head .mark{width:52px;height:52px;border-radius:16px;margin:0 auto 16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,var(--pri),var(--pri2));box-shadow:0 12px 30px rgba(124,92,255,.4)}
+.auth-head h3{margin:0 0 6px;font-size:22px;font-weight:800}
+.auth-head p{margin:0;color:var(--muted);font-size:13.5px}
+.auth-switch{display:flex;gap:4px;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:12px;padding:4px;margin:22px 28px 0}
+.auth-switch button{flex:1;padding:10px;border-radius:9px;border:none;background:transparent;color:var(--muted);font-weight:700;font-size:13.5px;cursor:pointer;transition:.18s}
+.auth-switch button.active{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff}
+.auth-body{padding:22px 28px 28px}
+.auth-foot{text-align:center;font-size:13px;color:var(--muted);margin-top:16px}
+.auth-foot a{color:var(--pri2);font-weight:700;cursor:pointer;text-decoration:none}
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted);font-size:12px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.social-btn{width:100%;padding:11px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);font-weight:700;font-size:13.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:.18s}
+.check-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);margin-bottom:16px}
+.check-row input{width:17px;height:17px;margin-top:3px;accent-color:var(--pri);cursor:pointer;flex-shrink:0}
+.modal-backdrop{position:fixed;inset:0;z-index:120;display:none;align-items:flex-start;justify-content:center;background:rgba(5,8,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:28px 18px;overflow-y:auto}
+.modal-backdrop.open{display:flex}
+.modal{width:100%;max-width:560px;margin:auto;border-radius:20px;background:linear-gradient(180deg,#151d30,#111828);border:1px solid rgba(255,255,255,.10);box-shadow:0 40px 90px rgba(0,0,0,.6);animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.modal-head h3{margin:0;font-size:17px;font-weight:800}
+.modal-head .close{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:16px;line-height:1}
+.modal-body{padding:24px}
+.modal-foot{display:flex;gap:12px;justify-content:space-between;padding:18px 24px;border-top:1px solid var(--line)}
+.stepper{display:flex;gap:8px;margin-bottom:22px}
+.stepper div{flex:1;height:5px;border-radius:999px;background:rgba(255,255,255,.09)}
+.stepper div.on{background:linear-gradient(90deg,var(--pri),var(--pri2))}
+.opt{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);cursor:pointer;transition:.16s;margin-bottom:10px}
+.opt:hover{border-color:rgba(124,92,255,.45);background:rgba(124,92,255,.08)}
+.opt.sel{border-color:var(--pri);background:rgba(124,92,255,.14);box-shadow:0 0 0 3px rgba(124,92,255,.13)}
+.opt .radio{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.28);display:grid;place-items:center;flex-shrink:0}
+.opt.sel .radio{border-color:var(--pri)}
+.opt.sel .radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--pri)}
+.opt .info{flex:1}
+.opt .info b{display:block;font-size:14.5px}
+.opt .info span{font-size:12.5px;color:var(--muted);font-family:'Inter',monospace;letter-spacing:.03em}
+.opt .amt{font-weight:800;font-size:15px;white-space:nowrap}
+.summary{background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px}
+.summary .row{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:6px 0}
+.summary .row span{color:var(--muted)}
+.summary .row b{font-weight:700;text-align:right;word-break:break-all}
+.summary .total{border-top:1px dashed var(--line);margin-top:8px;padding-top:12px;font-size:16px}
+.summary .total b{color:#7ee2a8;font-size:19px}
+.success-box{text-align:center;padding:14px 0 6px}
+.success-ring{width:78px;height:78px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:rgba(34,197,94,.14);border:2px solid rgba(34,197,94,.42);font-size:36px}
+.success-box h3{margin:0 0 6px;font-size:20px}
+.success-box p{color:var(--muted);margin:0 0 18px;font-size:14px}
+.order-id{display:inline-block;font-weight:800;font-size:19px;letter-spacing:.06em;background:rgba(124,92,255,.16);border:1px solid rgba(124,92,255,.4);color:#c6b8ff;padding:9px 22px;border-radius:12px;margin-bottom:20px}
+.msg-card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px;cursor:pointer;transition:.18s;position:relative}
+.msg-card:hover{border-color:rgba(124,92,255,.45);transform:translateY(-2px)}
+.msg-card.unread{border-color:rgba(124,92,255,.55);box-shadow:0 0 0 3px rgba(124,92,255,.10),0 10px 30px rgba(124,92,255,.15);background:linear-gradient(180deg,rgba(124,92,255,.06),var(--card2))}
+.msg-card.unread::before{content:"";position:absolute;top:14px;left:0;width:4px;height:32px;background:linear-gradient(180deg,var(--pri),var(--pri2));border-radius:0 4px 4px 0}
+.msg-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-bottom:8px}
+.msg-head b{font-size:15.5px;color:#fff;line-height:1.4}
+.msg-body{font-size:13.5px;color:var(--muted);line-height:1.7;margin:0}
+.msg-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.new-pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:800;letter-spacing:.08em;padding:3px 9px;border-radius:999px;background:linear-gradient(135deg,rgba(124,92,255,.3),rgba(0,212,255,.25));border:1px solid rgba(124,92,255,.5);color:#c6b8ff}
+.target-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
+#toastRoot{position:fixed;right:20px;bottom:20px;z-index:200;display:flex;flex-direction:column;gap:10px}
+.toast{min-width:230px;max-width:340px;padding:13px 18px;border-radius:13px;font-size:13.5px;font-weight:600;background:#1a2338;border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.5);animation:slideIn .25s ease;display:flex;gap:10px;align-items:flex-start}
+@keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.toast.ok{border-color:rgba(34,197,94,.42)}.toast.err{border-color:rgba(239,68,68,.42)}.toast.info{border-color:rgba(0,212,255,.42)}
+footer.site{border-top:1px solid var(--line);background:rgba(0,0,0,.22);margin-top:40px;padding:46px 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px;margin-bottom:30px}
+.foot-grid h5{margin:0 0 12px;font-size:14px;font-weight:700}
+.foot-grid a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:4px 0}
+.foot-grid a:hover{color:#fff}
+.foot-grid p{color:var(--muted);font-size:13.5px;margin:10px 0 0;max-width:300px}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.pay-icons{display:flex;gap:8px;flex-wrap:wrap}
+.pay-icons span{background:rgba(255,255,255,.05);border:1px solid var(--line);padding:5px 12px;border-radius:9px;font-size:12px;font-weight:700}
+.empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty .big{font-size:40px;margin-bottom:10px;opacity:.6}
+.empty h4{margin:0 0 6px;font-size:16px;color:var(--txt)}
+.empty p{margin:0 0 16px;font-size:13px}
+.copy-row{display:flex;gap:10px;flex-wrap:wrap}
+.copy-row .input{flex:1;min-width:220px}
+.hr{height:1px;background:var(--line);margin:22px 0}
+.mini{font-size:12.5px;color:var(--muted)}
+.center{text-align:center}
+.lock-box{max-width:460px;margin:60px auto;text-align:center;background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:46px 30px}
+.lock-box .ring{width:78px;height:78px;border-radius:50%;margin:0 auto 20px;display:grid;place-items:center;background:rgba(124,92,255,.14);border:2px solid rgba(124,92,255,.4);font-size:34px}
+.lock-box h2{margin:0 0 8px;font-size:22px}
+.lock-box p{color:var(--muted);margin:0 0 24px;font-size:14px}
+.lock-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.tier-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;background:rgba(124,92,255,.14);border:1px solid rgba(124,92,255,.35);color:#b9a8ff}
+.tier-badge.gold{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.4);color:#ffd88a}
+.tier-badge.silver{background:rgba(148,163,184,.16);border-color:rgba(148,163,184,.4);color:#cbd5e1}
+.fb-status{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#7ee2a8}
+.fb-status .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:fbPulse 2s ease-in-out infinite}
+@keyframes fbPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:static;display:flex;gap:6px;overflow-x:auto;padding:10px}.side h4{display:none}.side a{white-space:nowrap;padding:9px 13px}.foot-grid{grid-template-columns:1fr 1fr}.hero{padding:40px 26px}.two-col{grid-template-columns:1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}.hero-stats{gap:22px}.offer{padding:26px 22px}.balance-chip{display:none}nav.links a{padding:8px 10px;font-size:13px}.user-btn .uname{display:none}.pay-box .num{font-size:19px}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="nav">
+      <a href="#/home" class="logo">
+        <span class="mark">⚡</span>
+        <span>SocialBoost<span style="color:var(--pri2)">BD</span></span>
+      </a>
+      <nav class="links" id="navLinks">
+        <a href="#/home" data-nav="home">Home</a>
+        <a href="#/services" data-nav="services">Services</a>
+        <a href="#/dashboard" data-nav="dashboard">Dashboard</a>
+      </nav>
+      <div class="nav-right" id="navRight"></div>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:6px"><span class="mark">⚡</span><span>SocialBoost<span style="color:var(--pri2)">BD</span></span></div>
+        <p>বাংলাদেশের ব্যবসা ও ক্রিয়েটরদের জন্য প্রফেশনাল সোশ্যাল মিডিয়া প্রোমোশন ও মার্কেটিং সার্ভিস।</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#/services" onclick="setFilter('facebook')">Facebook Promotion</a>
+        <a href="#/services" onclick="setFilter('tiktok')">TikTok Promotion</a>
+        <a href="#/services" onclick="setFilter('youtube')">YouTube Promotion</a>
+        <a href="#/services" onclick="setFilter('instagram')">Instagram Promotion</a>
+      </div>
+      <div>
+        <h5>Account</h5>
+        <a href="#/dashboard">My Orders</a>
+        <a href="#/dashboard">Wallet</a>
+        <a href="#/dashboard">Add Balance</a>
+        <a href="#/dashboard">Support</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#/home">About</a>
+        <a href="#/home">Terms of Service</a>
+        <a href="#/home">Privacy Policy</a>
+        <a href="#/home">Refund Policy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 SocialBoost BD — All rights reserved.</span>
+      <div class="pay-icons"><span>bKash</span><span>Nagad</span><span>Rocket</span><span>Bank</span></div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modalBox"></div></div>
+<div id="toastRoot"></div>
+
+<!-- ============ FIREBASE SDK ============ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+/* =========================================================
+   FIREBASE INIT
+   ========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyBpFLAutyBUYN-325LG3ur1gV9_GitGzKk",
+  authDomain: "samir-3be83.firebaseapp.com",
+  databaseURL: "https://samir-3be83-default-rtdb.firebaseio.com",
+  projectId: "samir-3be83",
+  storageBucket: "samir-3be83.firebasestorage.app",
+  messagingSenderId: "406306581145",
+  appId: "1:406306581145:web:155c6e9262008f532a6608",
+  measurementId: "G-ZL29M5SP72"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+/* Firebase-safe email key (dots not allowed) */
+function emailKey(email){ return String(email).toLowerCase().replace(/\./g, ','); }
+
+/* Firebase helpers */
+async function fbGetUserById(uid){
+  const snap = await db.ref('users/' + uid).once('value');
+  return snap.val();
+}
+async function fbGetUserIdByEmail(email){
+  const snap = await db.ref('userEmails/' + emailKey(email)).once('value');
+  return snap.val();
+}
+async function fbGetUserByEmail(email){
+  const uid = await fbGetUserIdByEmail(email);
+  if (!uid) return null;
+  const user = await fbGetUserById(uid);
+  return user ? { ...user, id: uid } : null;
+}
+async function fbCreateUser(userData){
+  const uid = 'U-' + Date.now().toString().slice(-6);
+  const { email, ...rest } = userData;
+  await db.ref('users/' + uid).set({ ...rest, email });
+  await db.ref('userEmails/' + emailKey(email)).set(uid);
+  return { id: uid, ...userData };
+}
+async function fbUpdateUser(uid, data){
+  await db.ref('users/' + uid).update(data);
+}
+async function fbPushOrder(uid, order){
+  await db.ref('orders/' + order.id).set({ ...order, uid });
+}
+async function fbListenMessages(cb){
+  db.ref('messages').on('value', snap => {
+    const val = snap.val() || {};
+    const list = Object.entries(val).map(([id, m]) => ({ id, ...m }));
+    list.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+    cb(list);
+  });
+}
+async function fbListenReadMessages(uid, cb){
+  db.ref('readMessages/' + uid).on('value', snap => {
+    const val = snap.val() || {};
+    cb(Object.keys(val));
+  });
+}
+async function fbMarkRead(uid, msgId){
+  await db.ref('readMessages/' + uid + '/' + msgId).set(true);
+}
+async function fbMarkAllRead(uid, ids){
+  const updates = {};
+  ids.forEach(id => updates[id] = true);
+  await db.ref('readMessages/' + uid).update(updates);
+}
+
+/* =========================================================
+   CONFIG / STATIC DATA
+   ========================================================= */
+const PAYMENT_NUMBER = '01326907970';
+const PAYMENT_NAME   = 'SocialBoost BD';
+
+function mk(id, name, desc, delivery, base){
+  return { id, name, desc, delivery, start: base, packages: [
+    { label:'Starter', qty: 500, price: base },
+    { label:'Standard', qty: 1000, price: Math.round(base * 1.8) },
+    { label:'Premium', qty: 5000, price: Math.round(base * 8) }
+  ]};
+}
+
+const CATEGORIES = [
+  { id:'facebook', name:'Facebook', icon:'f', color:'#1877f2', tagline:'পেজ, পোস্ট ও ভিডিও প্রোমোশন', services:[
+    mk('fb-page-promo','Facebook Page Promotion','আপনার পেজের রিচ, ভিজিবিলিটি ও অর্গানিক রিচ বাড়ান।','1–3 days',50),
+    mk('fb-page-followers','Facebook Page Followers','পেজে নতুন অডিয়েন্স যুক্ত করুন।','2–4 days',80),
+    mk('fb-post-engagement','Facebook Post Engagement','পোস্টে রিয়েল এনগেজমেন্ট ও ইন্টারঅ্যাকশন বাড়ান।','1–2 days',60),
+    mk('fb-post-reactions','Facebook Post Reactions','পোস্টের রিচ ও সোশ্যাল প্রুফ বাড়ানোর জন্য ক্যাম্পেইন।','1–2 days',30),
+    mk('fb-video-promo','Facebook Video Promotion','ভিডিও ভিউ ও ওয়াচ-টাইম বাড়িয়ে রিচ বাড়ান।','2–4 days',70)
+  ]},
+  { id:'tiktok', name:'TikTok', icon:'♪', color:'#ff0050', tagline:'ভিডিও ভাইরাল করুন', services:[
+    mk('tt-profile-promo','TikTok Profile Promotion','প্রোফাইল ভিজিবিলিটি ও ভিউয়ার বেস বাড়ান।','1–3 days',60),
+    mk('tt-video-promo','TikTok Video Promotion','ভিডিওর রিচ ও ভিউ বাড়ান।','1–3 days',70),
+    mk('tt-likes','TikTok Likes','ভিডিওতে এনগেজমেন্ট রেট বাড়ান।','1–2 days',40),
+    mk('tt-followers','TikTok Followers','প্রোফাইলে নতুন ফলোয়ার যুক্ত করুন।','2–4 days',90)
+  ]},
+  { id:'youtube', name:'YouTube', icon:'▶', color:'#ff0000', tagline:'চ্যানেল গ্রোথ ও ভিউ', services:[
+    mk('yt-channel-promo','YouTube Channel Promotion','চ্যানেল ব্র্যান্ডিং ও গ্রোথ ক্যাম্পেইন।','3–6 days',120),
+    mk('yt-video-promo','YouTube Video Promotion','ভিডিও ভিউ ও ইমপ্রেশন বাড়ান।','2–5 days',100),
+    mk('yt-subscribers','YouTube Subscribers','চ্যানেলে নতুন সাবস্ক্রাইবার যুক্ত করুন।','4–8 days',250),
+    mk('yt-engagement','YouTube Engagement','লাইক, কমেন্ট ও ওয়াচ-টাইম ক্যাম্পেইন।','3–6 days',150)
+  ]},
+  { id:'instagram', name:'Instagram', icon:'◎', color:'#e1306c', tagline:'প্রোফাইল ও পোস্ট প্রোমোশন', services:[
+    mk('ig-profile-promo','Instagram Profile Promotion','প্রোফাইল ভিজিট ও রিচ বাড়ান।','1–3 days',60),
+    mk('ig-post-promo','Instagram Post Promotion','পোস্টের রিচ ও ইমপ্রেশন বাড়ান।','1–3 days',70),
+    mk('ig-likes','Instagram Likes','পোস্ট ও রিলসে এনগেজমেন্ট বাড়ান।','1–2 days',40),
+    mk('ig-followers','Instagram Followers','প্রোফাইলে নতুন ফলোয়ার যুক্ত করুন।','2–4 days',90)
+  ]},
+  { id:'telegram', name:'Telegram', icon:'✈', color:'#229ED9', tagline:'চ্যানেল ও গ্রুপ প্রোমোশন', services:[
+    mk('tg-channel-promo','Telegram Channel Promotion','চ্যানেলের রিচ ও মেম্বার বেস বাড়ান।','1–3 days',80),
+    mk('tg-members','Telegram Members','চ্যানেল/গ্রুপে নতুন মেম্বার যুক্ত করুন।','2–4 days',100),
+    mk('tg-post-views','Telegram Post Views','পোস্ট ভিউ ও ইমপ্রেশন বাড়ান।','1–2 days',30),
+    mk('tg-reactions','Telegram Reactions','পোস্টে রিঅ্যাকশন এনগেজমেন্ট।','1–2 days',40)
+  ]}
+];
+
+function findService(id){
+  for (const c of CATEGORIES){
+    const s = c.services.find(x => x.id === id);
+    if (s) return { ...s, category: c };
+  }
+  return null;
+}
+function allServices(){ return CATEGORIES.flatMap(c => c.services.map(s => ({ ...s, category: c }))); }
+
+/* =========================================================
+   SESSION (only uid in localStorage)
+   ========================================================= */
+const SESSION_KEY = 'sbbd_session_uid';
+
+function saveUid(uid){ if (uid) localStorage.setItem(SESSION_KEY, uid); else localStorage.removeItem(SESSION_KEY); }
+function loadUid(){ return localStorage.getItem(SESSION_KEY); }
+
+/* =========================================================
+   STATE
+   ========================================================= */
+const state = {
+  route: 'home',
+  filter: 'facebook',
+  dashTab: 'orders',
+  user: null,
+  orderSeq: 10025,
+  allMessages: [],
+  readMsgIds: [],
+  fbReady: false
+};
+
+function blankUserData(){
+  return {
+    balance: 0, orders: [], notifications: [], tickets: [], transactions: [],
+    referrals: 0, referralEarnings: 0, referralHistory: [],
+    resellerTier: null, totalSpent: 0, totalOrders: 0, completedOrders: 0
+  };
+}
+
+/* Firebase returns arrays sometimes as objects with numeric keys — normalize */
+function toArray(v){
+  if (!v) return [];
+  if (Array.isArray(v)) return v.filter(Boolean);
+  return Object.values(v);
+}
+function normalizeUser(u){
+  if (!u) return null;
+  return {
+    id: u.id, name: u.name, email: u.email, phone: u.phone || '',
+    createdAt: u.createdAt || new Date().toISOString(),
+    balance: u.balance ?? 0,
+    orders: toArray(u.orders),
+    notifications: toArray(u.notifications),
+    tickets: toArray(u.tickets),
+    transactions: toArray(u.transactions),
+    referrals: u.referrals ?? 0,
+    referralEarnings: u.referralEarnings ?? 0,
+    referralHistory: toArray(u.referralHistory),
+    resellerTier: u.resellerTier ?? null,
+    totalSpent: u.totalSpent ?? 0,
+    totalOrders: u.totalOrders ?? 0,
+    completedOrders: u.completedOrders ?? 0
+  };
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const money = n => '৳' + Number(n).toLocaleString('en-US');
+
+function escapeHtml(s){
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function toast(msg, type='ok'){
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  const icon = type === 'err' ? '⚠️' : type === 'info' ? 'ℹ️' : '✅';
+  el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+  $('#toastRoot').appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(30px)'; el.style.transition = '.3s'; }, 2600);
+  setTimeout(() => el.remove(), 3000);
+}
+
+function badge(status){ return `<span class="badge b-${status.toLowerCase()}">${status}</span>`; }
+
+function table(headers, rows){
+  return `<div class="table-wrap"><table>
+    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
+}
+
+function initials(name){ return (name || '?').split(' ').map(x => x[0]).slice(0,2).join('').toUpperCase(); }
+function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+function balance(){ return state.user ? (state.user.balance || 0) : 0; }
+
+function emptyState(icon, title, sub, actionHtml=''){
+  return `<div class="empty"><div class="big">${icon}</div><h4>${title}</h4><p>${sub}</p>${actionHtml}</div>`;
+}
+
+function copyText(text, label='কপি হয়েছে ✅'){
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(() => toast(label, 'ok'));
+  else { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); toast(label, 'ok'); }
+}
+
+/* =========================================================
+   MESSAGES — computed from Firebase data
+   ========================================================= */
+function getMyMessages(){
+  if (!state.user) return [];
+  const u = state.user;
+  return state.allMessages.filter(m => {
+    if (m.status && m.status !== 'Published') return false;
+    switch(m.target){
+      case 'All Users':          return true;
+      case 'All Resellers':      return !!u.resellerTier;
+      case 'Selected Users':     return Array.isArray(m.recipients) ? m.recipients.includes(u.email) : true;
+      case 'Selected Resellers': return !!u.resellerTier && (Array.isArray(m.recipients) ? m.recipients.includes(u.email) : true);
+      default:                   return true;
+    }
+  });
+}
+
+function getUnreadCount(){
+  if (!state.user) return 0;
+  const msgs = getMyMessages();
+  return msgs.filter(m => !state.readMsgIds.includes(m.id)).length;
+}
+
+async function markMessageRead(id){
+  if (!state.user) return;
+  if (state.readMsgIds.includes(id)) return;
+  state.readMsgIds.push(id);
+  await fbMarkRead(state.user.id, id);
+  $('#dashPanel').innerHTML = dashContent();
+  updateSidebarMessageBadge();
+  renderNavRight();
+}
+
+async function markAllRead(){
+  if (!state.user) return;
+  const ids = getMyMessages().map(m => m.id);
+  state.readMsgIds = [...new Set([...state.readMsgIds, ...ids])];
+  await fbMarkAllRead(state.user.id, ids);
+  $('#dashPanel').innerHTML = dashContent();
+  updateSidebarMessageBadge();
+  renderNavRight();
+  toast('সব মেসেজ পড়া হয়েছে ✅', 'ok');
+}
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+function navigate(){
+  const hash = location.hash.replace(/^#\/?/, '') || 'home';
+  const page = hash.split('/')[0];
+  state.route = page;
+
+  if (page === 'dashboard' && !state.user) renderLocked();
+  else render();
+
+  renderNavRight();
+  $$('#navLinks a').forEach(a => a.classList.toggle('active', a.dataset.nav === page));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function go(path){ location.hash = '#/' + path; }
+function setFilter(id){ state.filter = id; }
+window.addEventListener('hashchange', navigate);
+
+/* =========================================================
+   HEADER RIGHT
+   ========================================================= */
+function renderNavRight(){
+  const el = $('#navRight');
+  if (state.user){
+    const unread = getUnreadCount();
+    const b = unread > 0 ? `<span class="drop-badge">${unread}</span>` : '';
+    el.innerHTML = `
+      <span class="fb-status"><span class="dot"></span> Firestore</span>
+      <span class="balance-chip">💰 ${money(balance())}</span>
+      <div class="user-menu" id="userMenu">
+        <button class="user-btn" onclick="toggleUserMenu(event)">
+          <span class="avatar">${initials(state.user.name)}</span>
+          <span class="uname">${state.user.name.split(' ')[0]}</span>
+          <span style="font-size:10px;color:var(--muted)">▼</span>
+        </button>
+        <div class="user-drop">
+          <div class="uh"><b>${state.user.name}</b><span>${state.user.email}</span></div>
+          <a onclick="go('dashboard');closeUserMenu()">📊 Dashboard</a>
+          <a onclick="go('dashboard');setDash('orders');closeUserMenu()">🧾 My Orders</a>
+          <a onclick="go('dashboard');setDash('wallet');closeUserMenu()">👛 Wallet</a>
+          <a onclick="go('dashboard');setDash('messages');closeUserMenu()">✉️ Messages ${b}</a>
+          <a onclick="go('dashboard');setDash('profile');closeUserMenu()">👤 Profile</a>
+          <a class="danger" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>`;
+  } else {
+    el.innerHTML = `
+      <button class="btn btn-sm" onclick="openAuth('login')">Login</button>
+      <button class="btn btn-sm btn-pri" onclick="openAuth('signup')">Sign Up</button>`;
+  }
+}
+
+function toggleUserMenu(e){ e.stopPropagation(); $('#userMenu')?.classList.toggle('open'); }
+function closeUserMenu(){ $('#userMenu')?.classList.remove('open'); }
+document.addEventListener('click', closeUserMenu);
+
+/* =========================================================
+   AUTH MODAL
+   ========================================================= */
+let authMode = 'login';
+let authBusy = false;
+
+function openAuth(mode='login'){
+  authMode = mode;
+  renderAuthModal();
+  $('#modalBackdrop').classList.add('open');
+}
+function closeAuthModal(){ $('#modalBackdrop').classList.remove('open'); }
+function switchAuth(mode){ authMode = mode; renderAuthModal(); }
+
+function renderAuthModal(){
+  const box = $('#modalBox');
+  box.className = 'modal auth-modal';
+  const isLogin = authMode === 'login';
+
+  box.innerHTML = `
+    <div class="auth-head">
+      <div class="mark">⚡</div>
+      <h3>${isLogin ? 'স্বাগতম!' : 'অ্যাকাউন্ট খুলুন'}</h3>
+      <p>${isLogin ? 'Firebase অ্যাকাউন্টে লগইন করুন' : 'Firebase-এ নতুন অ্যাকাউন্ট তৈরি হবে'}</p>
+    </div>
+    <div class="auth-switch">
+      <button class="${isLogin ? 'active' : ''}" onclick="switchAuth('login')">Login</button>
+      <button class="${!isLogin ? 'active' : ''}" onclick="switchAuth('signup')">Sign Up</button>
+    </div>
+    <div class="auth-body">
+      ${isLogin ? loginForm() : signupForm()}
+      <div class="notice" style="margin-top:18px;font-size:12.5px;padding:12px 14px">
+        <span class="ico">🔥</span>
+        <div><b>Firebase Realtime DB সক্রিয়</b><br>সব অ্যাকাউন্ট ক্লাউডে সেভ হচ্ছে। যেকোনো ডিভাইস থেকে লগইন করতে পারবেন।</div>
+      </div>
+      <div class="auth-foot">
+        ${isLogin
+          ? `অ্যাকাউন্ট নেই? <a onclick="switchAuth('signup')">Sign Up করুন</a>`
+          : `আগে থেকেই আছে? <a onclick="switchAuth('login')">Login করুন</a>`}
+      </div>
+    </div>`;
+}
+
+function loginForm(){
+  return `
+    <div class="field">
+      <label>Email</label>
+      <input class="input" id="loginEmail" type="email" placeholder="you@example.com" autocomplete="email">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <div class="input-icon">
+        <input class="input" id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password">
+        <button class="eye" onclick="togglePass('loginPass',this)">👁</button>
+      </div>
+    </div>
+    <button class="btn btn-pri btn-block" id="loginBtn" onclick="doLogin()">Login</button>`;
+}
+
+function signupForm(){
+  return `
+    <div class="field"><label>Full Name</label><input class="input" id="suName" placeholder="আপনার নাম"></div>
+    <div class="field"><label>Email</label><input class="input" id="suEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label>Phone</label><input class="input" id="suPhone" placeholder="01XXXXXXXXX"></div>
+    <div class="two-col">
+      <div class="field">
+        <label>Password</label>
+        <div class="input-icon">
+          <input class="input" id="suPass" type="password" placeholder="কমপক্ষে ৬ অক্ষর">
+          <button class="eye" onclick="togglePass('suPass',this)">👁</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Confirm</label>
+        <div class="input-icon">
+          <input class="input" id="suPass2" type="password" placeholder="আবার লিখুন">
+          <button class="eye" onclick="togglePass('suPass2',this)">👁</button>
+        </div>
+      </div>
+    </div>
+    <div class="check-row">
+      <input type="checkbox" id="suTerms">
+      <label for="suTerms" style="cursor:pointer">আমি Terms ও Privacy Policy সম্মত আছি।</label>
+    </div>
+    <button class="btn btn-pri btn-block" id="signupBtn" onclick="doSignup()">Create Account</button>`;
+}
+
+function togglePass(id, btn){
+  const el = $('#' + id); if (!el) return;
+  if (el.type === 'password'){ el.type = 'text'; btn.textContent = '🙈'; }
+  else { el.type = 'password'; btn.textContent = '👁'; }
+}
+
+async function doLogin(){
+  if (authBusy) return;
+  const email = ($('#loginEmail')?.value || '').trim().toLowerCase();
+  const pass  = $('#loginPass')?.value || '';
+  if (!email || !pass){ toast('Email ও Password দিন', 'err'); return; }
+  if (!isValidEmail(email)){ toast('সঠিক Email দিন', 'err'); return; }
+
+  const btn = $('#loginBtn');
+  if (btn){ btn.textContent = '⏳ লোড হচ্ছে...'; btn.disabled = true; }
+  authBusy = true;
+
+  try {
+    const user = await fbGetUserByEmail(email);
+    if (!user){ toast('এই Email দিয়ে কোনো অ্যাকাউন্ট নেই', 'err'); return; }
+    if (user.password !== pass){ toast('Password ভুল হয়েছে', 'err'); return; }
+    if (user.status === 'Suspended'){ toast('আপনার অ্যাকাউন্ট সাসপেন্ড', 'err'); return; }
+
+    await loginAs(user);
+  } catch(err){
+    console.error(err);
+    toast('Firebase কানেকশন সমস্যা', 'err');
+  } finally {
+    authBusy = false;
+    if (btn){ btn.textContent = 'Login'; btn.disabled = false; }
+  }
+}
+
+async function loginAs(user){
+  state.user = normalizeUser(user);
+  saveUid(state.user.id);
+  closeAuthModal();
+  await bootFirebaseListeners();
+  renderNavRight();
+  toast(`স্বাগতম, ${user.name.split(' ')[0]}! 🎉`, 'ok');
+  if (state.route === 'dashboard') render(); else go('dashboard');
+}
+
+async function doSignup(){
+  if (authBusy) return;
+  const name  = ($('#suName')?.value || '').trim();
+  const email = ($('#suEmail')?.value || '').trim().toLowerCase();
+  const phone = ($('#suPhone')?.value || '').trim();
+  const pass  = $('#suPass')?.value || '';
+  const pass2 = $('#suPass2')?.value || '';
+  const terms = $('#suTerms')?.checked;
+
+  if (!name || name.length < 2){ toast('আপনার নাম লিখুন', 'err'); return; }
+  if (!isValidEmail(email)){ toast('সঠিক Email দিন', 'err'); return; }
+  if (!/^01[3-9]\d{8}$/.test(phone)){ toast('সঠিক ১১ ডিজিটের মোবাইল দিন', 'err'); return; }
+  if (pass.length < 6){ toast('Password কমপক্ষে ৬ অক্ষর', 'err'); return; }
+  if (pass !== pass2){ toast('Password দুইবার মিলছে না', 'err'); return; }
+  if (!terms){ toast('Terms সম্মত হোন', 'err'); return; }
+
+  const btn = $('#signupBtn');
+  if (btn){ btn.textContent = '⏳ তৈরি হচ্ছে...'; btn.disabled = true; }
+  authBusy = true;
+
+  try {
+    const existing = await fbGetUserByEmail(email);
+    if (existing){ toast('এই Email দিয়ে অ্যাকাউন্ট আছে', 'err'); return; }
+
+    const newUser = await fbCreateUser({
+      name, email, phone, password: pass,
+      createdAt: new Date().toISOString(),
+      ...blankUserData()
+    });
+    toast('Firebase-এ অ্যাকাউন্ট তৈরি হয়েছে! 🎉', 'ok');
+    await loginAs(newUser);
+  } catch(err){
+    console.error(err);
+    toast('Firebase-এ সেভ করা যাচ্ছে না', 'err');
+  } finally {
+    authBusy = false;
+    if (btn){ btn.textContent = 'Create Account'; btn.disabled = false; }
+  }
+}
+
+function logout(){
+  closeUserMenu();
+  if (state.user){
+    db.ref('messages').off();
+    db.ref('readMessages/' + state.user.id).off();
+  }
+  state.user = null;
+  state.allMessages = [];
+  state.readMsgIds = [];
+  saveUid(null);
+  renderNavRight();
+  toast('লগআউট সম্পন্ন হয়েছে', 'info');
+  go('home');
+}
+
+/* =========================================================
+   FIREBASE LISTENERS
+   ========================================================= */
+async function bootFirebaseListeners(){
+  if (!state.user) return;
+  const uid = state.user.id;
+
+  /* messages — realtime */
+  fbListenMessages(list => {
+    state.allMessages = list;
+    if (state.route === 'dashboard' && state.dashTab === 'messages'){
+      const p = $('#dashPanel'); if (p) p.innerHTML = dashContent();
+    }
+    updateSidebarMessageBadge();
+    renderNavRight();
+  });
+
+  /* read receipts — realtime */
+  fbListenReadMessages(uid, ids => {
+    state.readMsgIds = ids;
+    if (state.route === 'dashboard' && state.dashTab === 'messages'){
+      const p = $('#dashPanel'); if (p) p.innerHTML = dashContent();
+    }
+    updateSidebarMessageBadge();
+    renderNavRight();
+  });
+
+  /* user's own record — realtime (balance/orders/notifs sync) */
+  db.ref('users/' + uid).on('value', snap => {
+    const fresh = snap.val();
+    if (!fresh) return;
+    state.user = normalizeUser({ ...fresh, id: uid });
+    renderNavRight();
+    if (state.route === 'dashboard'){
+      const p = $('#dashPanel'); if (p) p.innerHTML = dashContent();
+    }
+  });
+}
+
+/* Persist writes */
+async function persistUser(partial){
+  if (!state.user) return;
+  if (partial) state.user = { ...state.user, ...partial };
+  const { id, ...rest } = state.user;
+  /* strip undefined */
+  Object.keys(rest).forEach(k => rest[k] === undefined && delete rest[k]);
+  await fbUpdateUser(id, rest);
+}
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+function render(){
+  const app = $('#app');
+  switch(state.route){
+    case 'services':  app.innerHTML = pageServices();  break;
+    case 'dashboard': app.innerHTML = pageDashboard(); break;
+    default:          app.innerHTML = pageHome();      break;
+  }
+}
+
+function renderLocked(){
+  const app = $('#app');
+  app.innerHTML = `
+    <div class="wrap"><div class="lock-box">
+      <div class="ring">🔒</div>
+      <h2>লগইন প্রয়োজন</h2>
+      <p>ড্যাশবোর্ড দেখতে হলে লগইন করুন বা নতুন অ্যাকাউন্ট তৈরি করুন।</p>
+      <div class="lock-actions">
+        <button class="btn btn-pri" onclick="openAuth('login')">🔑 Login</button>
+        <button class="btn" onclick="openAuth('signup')">✨ Sign Up</button>
+      </div>
+    </div></div>`;
+}
+
+/* ============ HOME ============ */
+function pageHome(){
+  const popular = allServices().filter(s => ['fb-page-promo','tt-video-promo','yt-subscribers','ig-followers'].includes(s.id));
+  return `
+  <div class="wrap section">
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="badge-pill">🇧🇩 বাংলাদেশের #১ প্রোমোশন প্ল্যাটফর্ম</span>
+        <h1>সোশ্যাল মিডিয়া প্রোমোশনে<br>আপনার ব্র্যান্ড বাড়ান</h1>
+        <p>Facebook, TikTok, YouTube, Instagram ও Telegram — সব প্ল্যাটফর্মের জন্য প্রফেশনাল সার্ভিস। Firebase-এ রিয়েল-টাইম সিঙ্ক।</p>
+        <div class="hero-cta">
+          <a href="#/services" class="btn btn-pri">🛒 Order Now</a>
+          <a href="#/services" class="btn">সার্ভিস দেখুন</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>12,400+</b><span>Completed Orders</span></div>
+          <div><b>3,800+</b><span>Happy Clients</span></div>
+          <div><b>24/7</b><span>Support</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><span class="eyebrow">Platforms</span><h2>আমাদের সার্ভিসসমূহ</h2><p>প্রতিটি প্ল্যাটফর্মের জন্য আলাদা ক্যাটাগরি</p></div>
+        <a href="#/services" class="btn btn-sm">সব দেখুন →</a>
+      </div>
+      <div class="grid grid-5">
+        ${CATEGORIES.map(c => `
+          <a class="card platform-card" href="#/services" onclick="setFilter('${c.id}')">
+            <div class="platform-icon" style="background:${c.color}">${c.icon}</div>
+            <h3>${c.name} Services</h3>
+            <p>${c.tagline}</p>
+            <span class="arrow">${c.services.length} services →</span>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><span class="eyebrow">Popular</span><h2>জনপ্রিয় সার্ভিস</h2></div></div>
+      <div class="grid grid-4">${popular.map(s => serviceCard(s)).join('')}</div>
+    </section>
+
+    <section class="section" style="padding-top:8px">
+      <div class="offer">
+        <div><h3>🎉 Special Offer — ২০% ছাড়!</h3><p>প্রথম অর্ডারে ২০% ডিসকাউন্ট। কোড: SAVE20</p></div>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="coupon">SAVE20</div>
+          <a href="#/services" class="btn" style="background:#fff;color:#111;border:none;font-weight:800">Order Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><span class="eyebrow">Process</span><h2>কিভাবে কাজ করে</h2></div></div>
+      <div class="grid grid-4">
+        ${[
+          ['01','সার্ভিস নির্বাচন','প্ল্যাটফর্ম ও সার্ভিস বেছে নিন।'],
+          ['02','প্যাকেজ ও লিংক','কোয়ান্টিটি/প্যাকেজ ও URL দিন।'],
+          ['03','পেমেন্ট','bKash/Nagad/Rocket বা Wallet দিয়ে দিন।'],
+          ['04','ডেলিভারি','ড্যাশবোর্ডে লাইভ স্ট্যাটাস দেখুন।']
+        ].map(([n,t,d]) => `
+          <div class="card step-card"><div class="step-num">${n}</div><h4>${t}</h4><p>${d}</p></div>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:8px">
+      <div class="notice"><span class="ico">⚠️</span><div><b>নীতিমালা:</b> আমরা বট/ফেক অ্যাকাউন্ট দিয়ে কৃত্রিম ফলোয়ার সরবরাহ করি না।</div></div>
+    </section>
+  </div>`;
+}
+
+function serviceCard(s){
+  const cat = s.category || CATEGORIES.find(c => c.services.some(x => x.id === s.id));
+  return `
+  <div class="card service-card">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="platform-icon" style="width:30px;height:30px;border-radius:9px;font-size:13px;background:${cat.color}">${cat.icon}</span>
+      <span class="mini" style="font-weight:700">${cat.name}</span>
+    </div>
+    <h3>${s.name}</h3>
+    <p class="desc">${s.desc}</p>
+    <div class="price-row"><span class="price">${money(s.start)}</span><span class="from">থেকে শুরু</span></div>
+    <div class="meta"><span class="tag">⏱ ${s.delivery}</span></div>
+    <button class="btn btn-pri btn-block" onclick="openOrder('${s.id}')">Order Now</button>
+  </div>`;
+}
+
+function pageServices(){
+  const cat = CATEGORIES.find(c => c.id === state.filter) || CATEGORIES[0];
+  return `
+  <div class="wrap section">
+    <div class="section-head">
+      <div><span class="eyebrow">Services</span><h2>সার্ভিস ক্যাটাগরি</h2><p>প্ল্যাটফর্ম নির্বাচন করে প্যাকেজ অর্ডার করুন</p></div>
+    </div>
+    <div class="tabs">
+      ${CATEGORIES.map(c => `
+        <button class="tab ${c.id === cat.id ? 'active' : ''}" onclick="setFilter('${c.id}');render();">
+          <span style="width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:11px;background:${c.color};color:#fff">${c.icon}</span>
+          ${c.name}
+        </button>
+      `).join('')}
+    </div>
+    <div class="grid grid-3">${cat.services.map(s => serviceCard({ ...s, category: cat })).join('')}</div>
+    <div class="hr"></div>
+    <div class="notice"><span class="ico">⚠️</span><div><b>নীতিমালা:</b> সকল অর্ডার প্ল্যাটফর্মের রুলস মেনে প্রসেস করা হয়।</div></div>
+  </div>`;
+}
+
+/* ============ ORDER MODAL ============ */
+let draft = null;
+function openOrder(serviceId){
+  if (!state.user){ toast('অর্ডার করতে আগে লগইন করুন', 'info'); openAuth('login'); return; }
+  const svc = findService(serviceId);
+  if (!svc) return;
+  draft = { svc, pkgIndex: 1, url: '', qty: svc.packages[1].qty, payment: 'bkash', step: 1, orderId: null, trx: '' };
+  renderOrderModal();
+  $('#modalBackdrop').classList.add('open');
+}
+function closeModal(){ $('#modalBackdrop').classList.remove('open'); draft = null; $('#modalBox').className = 'modal'; }
+function calcPrice(){ const p = draft.svc.packages[draft.pkgIndex]; return Math.max(1, Math.round(p.price * (draft.qty / p.qty))); }
+
+function renderOrderModal(){
+  const d = draft; if (!d) return;
+  const box = $('#modalBox'); box.className = 'modal';
+  const pkg = d.svc.packages[d.pkgIndex];
+  const price = calcPrice();
+  let title = 'নতুন অর্ডার', body = '', foot = '';
+
+  if (d.step === 1){
+    body = `
+      <div class="stepper"><div class="on"></div><div></div><div></div></div>
+      <div class="mini">সার্ভিস</div>
+      <h3 style="margin:0 0 4px;font-size:17px">${d.svc.name}</h3>
+      <p class="mini" style="margin:0 0 20px">${d.svc.category.name} · ${d.svc.delivery}</p>
+      ${d.svc.packages.map((p,i) => `
+        <div class="opt ${i === d.pkgIndex ? 'sel' : ''}" onclick="pickPkg(${i})">
+          <div class="radio"></div>
+          <div class="info"><b>${p.label}</b><span>${p.qty.toLocaleString()} unit</span></div>
+          <div class="amt">${money(p.price)}</div>
+        </div>`).join('')}`;
+    foot = `<button class="btn" onclick="closeModal()">বাতিল</button><button class="btn btn-pri" onclick="orderNext()">পরবর্তী →</button>`;
+  }
+
+  if (d.step === 2){
+    body = `
+      <div class="stepper"><div class="on"></div><div class="on"></div><div></div></div>
+      <div class="field"><label>সোশ্যাল প্রোফাইল / পোস্ট / ভিডিও URL</label>
+        <input class="input" id="orderUrl" placeholder="https://facebook.com/yourpage" value="${d.url}"></div>
+      <div class="field"><label>কোয়ান্টিটি</label>
+        <input class="input" id="orderQty" type="number" min="100" step="100" value="${d.qty}"></div>
+      <div class="summary">
+        <div class="row"><span>সার্ভিস</span><b>${d.svc.name}</b></div>
+        <div class="row"><span>প্যাকেজ</span><b>${pkg.label}</b></div>
+        <div class="row"><span>ডেলিভারি</span><b>${d.svc.delivery}</b></div>
+        <div class="row total"><span>মোট</span><b>${money(price)}</b></div>
+      </div>`;
+    foot = `<button class="btn" onclick="orderBack()">← পিছনে</button><button class="btn btn-pri" onclick="orderNext()">পরবর্তী →</button>`;
+  }
+
+  if (d.step === 3){
+    const methods = [
+      ['bkash','bKash',PAYMENT_NUMBER],
+      ['nagad','Nagad',PAYMENT_NUMBER],
+      ['rocket','Rocket',PAYMENT_NUMBER],
+      ['wallet','Wallet Balance','ব্যালেন্স: ' + money(balance())]
+    ];
+    const isWallet = d.payment === 'wallet';
+    body = `
+      <div class="stepper"><div class="on"></div><div class="on"></div><div class="on"></div></div>
+      <div class="summary">
+        <div class="row"><span>সার্ভিস</span><b>${d.svc.name}</b></div>
+        <div class="row"><span>কোয়ান্টিটি</span><b>${Number(d.qty).toLocaleString()}</b></div>
+        <div class="row total"><span>পরিশোধযোগ্য</span><b>${money(price)}</b></div>
+      </div>
+      ${!isWallet ? `
+        <div class="pay-box">
+          <div>
+            <span class="lbl">${d.payment.toUpperCase()} — Send Money নাম্বার</span>
+            <div class="num">${PAYMENT_NUMBER}</div>
+            <span class="tagline">${PAYMENT_NAME} — এ নাম্বারে সেন্ড মানি করুন</span>
+          </div>
+          <button class="btn btn-sm" onclick="copyText('${PAYMENT_NUMBER}','নাম্বার কপি হয়েছে 📋')">📋 Copy</button>
+        </div>` : ''}
+      <div class="mini" style="margin-bottom:10px;font-weight:700;color:var(--txt)">পেমেন্ট মেথড</div>
+      ${methods.map(([id, name, sub]) => `
+        <div class="opt ${d.payment === id ? 'sel' : ''}" onclick="pickPay('${id}')">
+          <div class="radio"></div>
+          <div class="info"><b>${name}</b><span>${sub}</span></div>
+        </div>`).join('')}
+      ${!isWallet ? `
+        <div class="field" style="margin-top:16px">
+          <label>Transaction ID</label>
+          <input class="input" id="orderTrx" placeholder="যেমন: 8N7A2K9L01" value="${d.trx || ''}">
+          <div class="mini" style="margin-top:6px">💰 <b style="color:#ffd88a">${PAYMENT_NUMBER}</b> নাম্বারে সেন্ড মানি করে TrxID দিন।</div>
+        </div>` : ''}`;
+    foot = `<button class="btn" onclick="orderBack()">← পিছনে</button><button class="btn btn-pri" onclick="orderNext()">অর্ডার কনফার্ম করুন</button>`;
+  }
+
+  if (d.step === 4){
+    title = 'অর্ডার সফল';
+    body = `
+      <div class="success-box">
+        <div class="success-ring">✅</div>
+        <h3>Firebase-এ অর্ডার জমা হয়েছে!</h3>
+        <p>আমাদের টিম শীঘ্রই প্রসেস শুরু করবে।</p>
+        <div class="order-id">${d.orderId}</div>
+        <div class="summary" style="text-align:left">
+          <div class="row"><span>সার্ভিস</span><b>${d.svc.name}</b></div>
+          <div class="row"><span>কোয়ান্টিটি</span><b>${Number(d.qty).toLocaleString()}</b></div>
+          <div class="row"><span>পেমেন্ট</span><b>${d.payment.toUpperCase()}</b></div>
+          ${d.trx ? `<div class="row"><span>TrxID</span><b>${d.trx}</b></div>` : ''}
+          <div class="row"><span>স্ট্যাটাস</span><b>${badge('Pending')}</b></div>
+          <div class="row total"><span>মোট</span><b>${money(price)}</b></div>
+        </div>
+      </div>`;
+    foot = `<button class="btn" onclick="closeModal()">বন্ধ করুন</button><button class="btn btn-pri" onclick="closeModal();go('dashboard')">ড্যাশবোর্ডে দেখুন</button>`;
+  }
+
+  box.innerHTML = `
+    <div class="modal-head"><h3>${title}</h3><button class="close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">${body}</div>
+    <div class="modal-foot">${foot}</div>`;
+}
+
+function pickPkg(i){ draft.pkgIndex = i; draft.qty = draft.svc.packages[i].qty; renderOrderModal(); }
+function pickPay(id){ draft.payment = id; renderOrderModal(); }
+function orderBack(){
+  if (draft.step === 3){ const t = $('#orderTrx'); if (t) draft.trx = t.value.trim(); }
+  if (draft.step > 1) draft.step--;
+  renderOrderModal();
+}
+
+async function orderNext(){
+  const d = draft;
+  if (!state.user){ toast('সেশন নেই', 'err'); closeModal(); return; }
+
+  if (d.step === 2){
+    const url = $('#orderUrl').value.trim();
+    const qty = parseInt($('#orderQty').value) || 0;
+    if (!url){ toast('URL দিন', 'err'); return; }
+    if (qty < 100){ toast('সর্বনিম্ন ১০০', 'err'); return; }
+    d.url = url; d.qty = qty;
+  }
+
+  if (d.step === 3){
+    const price = calcPrice();
+    let newBalance = state.user.balance;
+
+    if (d.payment === 'wallet'){
+      if (state.user.balance < price){ toast('Wallet ব্যালেন্স পর্যাপ্ত নয়', 'err'); return; }
+      newBalance -= price;
+    } else {
+      const trxEl = $('#orderTrx');
+      const trx = trxEl ? trxEl.value.trim() : '';
+      if (!trx){ toast('TrxID দিন', 'err'); return; }
+      d.trx = trx;
+    }
+
+    state.orderSeq++;
+    d.orderId = '#' + state.orderSeq;
+
+    const order = {
+      id: d.orderId,
+      uid: state.user.id,
+      customer: state.user.name,
+      service: d.svc.name,
+      platform: d.svc.category.name,
+      qty: d.qty,
+      amount: price,
+      status: 'Pending',
+      date: new Date().toISOString().slice(0, 10),
+      url: d.url,
+      link: d.url,
+      payment: d.payment,
+      trx: d.trx || '—',
+      paymentNumber: d.payment !== 'wallet' ? PAYMENT_NUMBER : null
+    };
+
+    const newOrderList = [order, ...(state.user.orders || [])];
+    const newTx = [{
+      date: new Date().toISOString().slice(0,10),
+      desc: d.payment === 'wallet'
+        ? `Order payment — ${d.svc.name}`
+        : `${d.payment.toUpperCase()} → ${PAYMENT_NUMBER} (TrxID: ${d.trx}) — ${d.svc.name}`,
+      type: d.payment === 'wallet' ? 'Debit' : 'Pending',
+      amount: -price
+    }, ...(state.user.transactions || [])];
+
+    const newNotif = [{
+      t: `Order ${d.orderId} তৈরি হয়েছে`,
+      d: `${d.svc.name} — ${money(price)}${d.trx ? ' (TrxID: ' + d.trx + ')' : ''}`,
+      time: 'এখনই'
+    }, ...(state.user.notifications || [])];
+
+    const updates = {
+      balance: newBalance,
+      orders: newOrderList,
+      transactions: newTx,
+      notifications: newNotif,
+      totalOrders: (state.user.totalOrders || 0) + 1,
+      totalSpent: (state.user.totalSpent || 0) + price
+    };
+
+    try {
+      await fbUpdateUser(state.user.id, updates);
+      await fbPushOrder(state.user.id, order);
+    } catch(e){
+      console.error(e);
+      toast('Firebase-এ সেভ ব্যর্থ', 'err');
+      return;
+    }
+
+    state.user = { ...state.user, ...updates };
+    d.step = 4;
+    renderOrderModal();
+    toast('অর্ডার সফলভাবে Firebase-এ সেভ ✅', 'ok');
+    return;
+  }
+  d.step++;
+  renderOrderModal();
+}
+
+$('#modalBackdrop').addEventListener('click', e => { if (e.target.id === 'modalBackdrop') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ============ DASHBOARD ============ */
+const DASH_NAV = [
+  ['orders','🧾','My Orders'],
+  ['wallet','👛','Wallet'],
+  ['add','➕','Add Balance'],
+  ['history','📜','Order History'],
+  ['messages','✉️','Messages'],
+  ['notifications','🔔','Notifications'],
+  ['support','🎧','Support'],
+  ['profile','👤','Profile'],
+  ['referral','🤝','Referral / Reseller']
+];
+
+function pageDashboard(){
+  return `
+  <div class="wrap">
+    <div class="shell">
+      <aside class="side" id="dashSidebar">
+        <h4>User Panel</h4>
+        ${renderSidebarLinks()}
+      </aside>
+      <section class="panel" id="dashPanel">${dashContent()}</section>
+    </div>
+  </div>`;
+}
+
+function renderSidebarLinks(){
+  return DASH_NAV.map(([id, ic, name]) => {
+    let b = '';
+    if (id === 'messages'){
+      const unread = getUnreadCount();
+      if (unread > 0) b = `<span class="badge-num">${unread}</span>`;
+    }
+    return `<a class="${state.dashTab === id ? 'active' : ''}" onclick="setDash('${id}')"><span class="ic">${ic}</span>${name}${b}</a>`;
+  }).join('');
+}
+
+function updateSidebarMessageBadge(){
+  const side = document.getElementById('dashSidebar');
+  if (!side) return;
+  const h4 = side.querySelector('h4');
+  side.innerHTML = (h4 ? h4.outerHTML : '<h4>User Panel</h4>') + renderSidebarLinks();
+}
+
+function setDash(id){ state.dashTab = id; $('#dashPanel').innerHTML = dashContent(); updateSidebarMessageBadge(); }
+
+function dashContent(){
+  const t = state.dashTab;
+  const u = state.user;
+  if (!u) return '';
+
+  if (t === 'orders'){
+    return `
+      <div class="panel-head"><h2>My Orders</h2><a href="#/services" class="btn btn-pri btn-sm">+ নতুন অর্ডার</a></div>
+      <div class="stat-grid">
+        <div class="stat g"><span>Wallet Balance</span><b>${money(u.balance)}</b></div>
+        <div class="stat p"><span>Total Orders</span><b>${(u.orders||[]).length}</b></div>
+        <div class="stat w"><span>Pending</span><b>${(u.orders||[]).filter(o=>o.status==='Pending').length}</b></div>
+      </div>
+      ${(u.orders||[]).length ? table(['Order ID','Service','Qty','Amount','Status','Date'],
+        u.orders.map(o => [`<b>${o.id}</b>`, o.service, Number(o.qty).toLocaleString(), money(o.amount), badge(o.status), o.date])
+      ) : emptyState('🧾','কোনো অর্ডার নেই','এখনো কোনো অর্ডার করেননি।', `<a href="#/services" class="btn btn-pri btn-sm">+ প্রথম অর্ডার</a>`)}`;
+  }
+
+  if (t === 'wallet'){
+    return `
+      <div class="panel-head"><h2>Wallet</h2></div>
+      <div class="stat-grid">
+        <div class="stat g"><span>বর্তমান ব্যালেন্স</span><b>${money(u.balance)}</b></div>
+        <div class="stat p"><span>মোট অর্ডার</span><b>${(u.orders||[]).length}</b></div>
+        <div class="stat w"><span>Pending</span><b>${(u.orders||[]).filter(o=>o.status==='Pending').length}</b></div>
+      </div>
+      <div class="hr"></div>
+      <h3 style="font-size:15px;margin:0 0 14px">Wallet Transactions</h3>
+      ${(u.transactions||[]).length ? table(['Date','Description','Type','Amount'],
+        u.transactions.map(tx => {
+          const cls = tx.type === 'Credit' ? 'Credit' : tx.type === 'Pending' ? 'Pending' : 'Debit';
+          const c = tx.amount >= 0 ? '#7ee2a8' : '#ffa3a3';
+          return [tx.date, tx.desc, badge(cls), `<b style="color:${c}">${tx.amount>=0?'+':'-'}${money(Math.abs(tx.amount))}</b>`];
+        })
+      ) : emptyState('💳','কোনো লেনদেন নেই','ব্যালেন্স যোগ করলে এখানে দেখা যাবে।', `<button class="btn btn-pri btn-sm" onclick="setDash('add')">+ Add Balance</button>`)}`;
+  }
+
+  if (t === 'add'){
+    return `
+      <div class="panel-head"><h2>Add Balance</h2></div>
+      <div class="pay-box" style="margin-bottom:20px">
+        <div>
+          <span class="lbl">💰 Send Money নাম্বার (bKash / Nagad / Rocket)</span>
+          <div class="num">${PAYMENT_NUMBER}</div>
+          <span class="tagline">${PAYMENT_NAME} — এ নাম্বারে সেন্ড মানি করুন</span>
+        </div>
+        <button class="btn btn-sm" onclick="copyText('${PAYMENT_NUMBER}','কপি হয়েছে 📋')">📋 Copy</button>
+      </div>
+      <div style="max-width:520px">
+        <div class="field"><label>পরিমাণ (৳)</label><input class="input" id="addAmt" type="number" min="50" placeholder="সর্বনিম্ন ৫০"></div>
+        <div class="field"><label>পেমেন্ট মেথড</label>
+          <select id="addMethod"><option value="bkash">bKash</option><option value="nagad">Nagad</option><option value="rocket">Rocket</option></select>
+        </div>
+        <div class="field"><label>Transaction ID</label><input class="input" id="addTrx" placeholder="যেমন: 8N7A2K9L01"></div>
+        <button class="btn btn-pri btn-block" onclick="addBalance()">রিকোয়েস্ট পাঠান</button>
+      </div>`;
+  }
+
+  if (t === 'history'){
+    const past = (u.orders||[]).filter(o => o.status === 'Completed' || o.status === 'Cancelled');
+    return `<div class="panel-head"><h2>Order History</h2></div>
+      ${past.length ? table(['Order ID','Service','Amount','Status','Date'],
+        past.map(o => [`<b>${o.id}</b>`, o.service, money(o.amount), badge(o.status), o.date])
+      ) : emptyState('📜','কোনো ইতিহাস নেই','সম্পন্ন বা বাতিল অর্ডার এখানে দেখা যাবে।')}`;
+  }
+
+  if (t === 'messages'){
+    const msgs = getMyMessages();
+    const unreadCount = msgs.filter(m => !state.readMsgIds.includes(m.id)).length;
+    return `
+      <div class="panel-head">
+        <div>
+          <h2>✉️ Messages</h2>
+          <p class="mini" style="margin-top:4px">Firebase থেকে রিয়েল-টাইমে আসছে</p>
+        </div>
+        ${unreadCount > 0
+          ? `<button class="btn btn-sm btn-pri" onclick="markAllRead()">✅ সব পড়া (${unreadCount})</button>`
+          : (msgs.length ? `<span class="mini">✅ সব পড়া হয়েছে</span>` : '')}
+      </div>
+      ${msgs.length ? msgs.map(m => {
+        const isRead = state.readMsgIds.includes(m.id);
+        return `
+          <div class="msg-card ${!isRead ? 'unread' : ''}" onclick="markMessageRead('${m.id}')">
+            <div class="msg-head">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <b>${escapeHtml(m.title)}</b>
+                ${!isRead ? `<span class="new-pill">● NEW</span>` : ''}
+              </div>
+              <span class="mini">📅 ${escapeHtml(m.date)}</span>
+            </div>
+            <p class="msg-body">${escapeHtml(m.message).replace(/\n/g,'<br>')}</p>
+            ${m.image ? `<img src="${escapeHtml(m.image)}" style="margin-top:12px;border-radius:10px;max-height:220px;border:1px solid var(--line)" onerror="this.style.display='none'">` : ''}
+            <div class="msg-actions">
+              <span class="target-pill">🎯 ${escapeHtml(m.target || 'All Users')}</span>
+              ${m.btnText && m.btnLink ? `<a href="${escapeHtml(m.btnLink)}" class="btn btn-pri btn-sm" onclick="event.stopPropagation()">${escapeHtml(m.btnText)}</a>` : ''}
+              ${!isRead ? `<span class="mini" style="margin-left:auto;color:#b9a8ff;font-weight:700">👆 ক্লিক করে পড়া মার্ক করুন</span>` : ''}
+            </div>
+          </div>`;
+      }).join('') : emptyState('✉️','কোনো মেসেজ নেই','অ্যাডমিন থেকে মেসেজ আসলে এখানে দেখাবে।')}`;
+  }
+
+  if (t === 'notifications'){
+    return `<div class="panel-head"><h2>Notifications</h2></div>
+      ${(u.notifications||[]).length ? u.notifications.map(n => `
+        <div class="card" style="margin-bottom:12px;padding:16px 18px">
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <b style="font-size:14.5px">${n.t}</b><span class="mini">${n.time}</span>
+          </div>
+          <p class="mini" style="margin:6px 0 0">${n.d}</p>
+        </div>
+      `).join('') : emptyState('🔔','কোনো নোটিফিকেশন নেই','নতুন অর্ডার আপডেট এখানে দেখাবে।')}`;
+  }
+
+  if (t === 'support'){
+    return `<div class="panel-head"><h2>Support</h2></div>
+      <div class="two-col" style="margin-bottom:24px">
+        <div class="field"><label>Subject</label><input class="input" id="tkSubject" placeholder="সমস্যার বিষয়"></div>
+        <div class="field"><label>Order ID (optional)</label><input class="input" id="tkOrder" placeholder="#10024"></div>
+      </div>
+      <div class="field"><label>Message</label><textarea id="tkMsg" rows="4" placeholder="বিস্তারিত লিখুন..."></textarea></div>
+      <button class="btn btn-pri" onclick="createTicket()">টিকেট তৈরি করুন</button>
+      <div class="hr"></div>
+      <h3 style="font-size:15px;margin:0 0 14px">আপনার টিকেট</h3>
+      ${(u.tickets||[]).length ? table(['Ticket','Subject','Status','Date'],
+        u.tickets.map(x => [x.id, x.subject, badge(x.status === 'Answered' ? 'Completed' : 'Pending'), x.date])
+      ) : emptyState('🎧','কোনো টিকেট নেই','সমস্যা থাকলে উপরে টিকেট তৈরি করুন।')}`;
+  }
+
+  if (t === 'profile'){
+    return `<div class="panel-head"><h2>Profile</h2></div>
+      <div class="two-col" style="max-width:640px">
+        <div class="field"><label>Full Name</label><input class="input" id="pfName" value="${u.name || ''}"></div>
+        <div class="field"><label>Email</label><input class="input" value="${u.email || ''}" readonly style="opacity:.65"></div>
+        <div class="field"><label>Phone</label><input class="input" id="pfPhone" value="${u.phone || ''}"></div>
+        <div class="field"><label>WhatsApp</label><input class="input" id="pfWa" value="${u.phone || ''}"></div>
+      </div>
+      <div class="field" style="max-width:640px"><label>New Password</label>
+        <input class="input" id="pfPass" type="password" placeholder="পরিবর্তন না করলে ফাঁকা রাখুন"></div>
+      <button class="btn btn-pri" onclick="saveProfile()">সেভ করুন</button>
+      <div class="hr"></div>
+      <h3 style="font-size:15px;margin:0 0 12px">Account Info</h3>
+      <div class="stat-grid" style="max-width:640px">
+        <div class="stat"><span>User ID</span><b style="font-size:16px">${u.id}</b></div>
+        <div class="stat"><span>Member Since</span><b style="font-size:15px">${(u.createdAt || '').slice(0,10) || '—'}</b></div>
+      </div>`;
+  }
+
+  if (t === 'referral'){
+    const refLink = `https://socialboostbd.com/?ref=${u.id || 'USER'}`;
+    const tier = u.resellerTier;
+    const tierHtml = tier ? `<span class="tier-badge ${tier.toLowerCase()}">${tier}</span>`
+                          : `<span class="tier-badge" style="background:rgba(255,255,255,.05);border-color:var(--line);color:var(--muted)">No Tier Yet</span>`;
+    return `<div class="panel-head"><h2>Referral / Reseller</h2></div>
+      <div class="notice" style="margin-bottom:22px">
+        <span class="ico">🎁</span>
+        <div><b>রেফার করে ইনকাম করুন!</b> বন্ধুদের ইনভাইট করুন। তারা অর্ডার করলে আপনি <b>১০% কমিশন</b> পাবেন।</div>
+      </div>
+      <div class="field"><label>আপনার রেফারেল লিংক</label>
+        <div class="copy-row">
+          <input class="input" id="refLink" value="${refLink}" readonly>
+          <button class="btn" onclick="copyRef()">📋 Copy</button>
+        </div>
+      </div>
+      <div class="stat-grid" style="margin-top:22px">
+        <div class="stat g"><span>Total Referrals</span><b>${u.referrals||0}</b></div>
+        <div class="stat g"><span>Referral Earnings</span><b>${money(u.referralEarnings||0)}</b></div>
+        <div class="stat p"><span>Reseller Tier</span><b style="font-size:15px">${tierHtml}</b></div>
+      </div>`;
+  }
+
+  return '';
+}
+
+function copyRef(){ const el = $('#refLink'); if (el) copyText(el.value, 'রেফারেল লিংক কপি হয়েছে 📋'); }
+
+async function addBalance(){
+  if (!state.user) return;
+  const amt = parseInt($('#addAmt').value) || 0;
+  const method = $('#addMethod').value;
+  const trx = $('#addTrx').value.trim();
+  if (amt < 50){ toast('সর্বনিম্ন ৫০ টাকা', 'err'); return; }
+  if (!trx){ toast('TrxID দিন', 'err'); return; }
+
+  const newTx = [{
+    date: new Date().toISOString().slice(0,10),
+    desc: `${method.toUpperCase()} → ${PAYMENT_NUMBER} (TrxID: ${trx})`,
+    type: 'Credit', amount: amt
+  }, ...(state.user.transactions || [])];
+
+  const newNotif = [{
+    t: `Wallet এ ${money(amt)} যোগ হয়েছে`,
+    d: `TrxID: ${trx} — ${PAYMENT_NUMBER} নাম্বারে যাচাই সম্পন্ন।`,
+    time: 'এখনই'
+  }, ...(state.user.notifications || [])];
+
+  const updates = {
+    balance: (state.user.balance || 0) + amt,
+    transactions: newTx,
+    notifications: newNotif
+  };
+  try {
+    await fbUpdateUser(state.user.id, updates);
+    state.user = { ...state.user, ...updates };
+    toast(`${money(amt)} ব্যালেন্স যোগ হয়েছে ✅`, 'ok');
+    setDash('wallet');
+  } catch(e){ toast('Firebase-এ সেভ ব্যর্থ', 'err'); }
+}
+
+async function createTicket(){
+  if (!state.user) return;
+  const s = $('#tkSubject').value.trim();
+  const m = $('#tkMsg').value.trim();
+  if (!s || !m){ toast('Subject ও Message দিন', 'err'); return; }
+
+  const newTicket = {
+    id:'#TK-' + (200 + (state.user.tickets?.length || 0) + 1),
+    subject: s, message: m, status: 'Pending',
+    date: new Date().toISOString().slice(0,10)
+  };
+  const newTickets = [newTicket, ...(state.user.tickets || [])];
+  try {
+    await fbUpdateUser(state.user.id, { tickets: newTickets });
+    state.user = { ...state.user, tickets: newTickets };
+    setDash('support');
+    toast('টিকেট তৈরি হয়েছে', 'ok');
+  } catch(e){ toast('সেভ ব্যর্থ', 'err'); }
+}
+
+async function saveProfile(){
+  if (!state.user) return;
+  const name  = $('#pfName').value.trim();
+  const phone = $('#pfPhone').value.trim();
+  const pass  = $('#pfPass').value;
+  if (!name || name.length < 2){ toast('নাম দিন', 'err'); return; }
+  if (phone && !/^01[3-9]\d{8}$/.test(phone)){ toast('সঠিক মোবাইল দিন', 'err'); return; }
+  if (pass && pass.length < 6){ toast('Password কমপক্ষে ৬ অক্ষর', 'err'); return; }
+
+  const updates = { name, phone };
+  if (pass) updates.password = pass;
+  try {
+    await fbUpdateUser(state.user.id, updates);
+    state.user = { ...state.user, ...updates };
+    renderNavRight();
+    setDash('profile');
+    toast('প্রোফাইল সেভ হয়েছে ✅', 'ok');
+  } catch(e){ toast('সেভ ব্যর্থ', 'err'); }
+}
+
+/* =========================================================
+   BOOT
+   ========================================================= */
+(async function boot(){
+  renderNavRight();
+  navigate();
+
+  const uid = loadUid();
+  if (uid){
+    try {
+      const user = await fbGetUserById(uid);
+      if (user){
+        state.user = normalizeUser({ ...user, id: uid });
+        await bootFirebaseListeners();
+        renderNavRight();
+        if (state.route === 'dashboard') render();
+      } else {
+        saveUid(null);
+      }
+    } catch(e){ console.error('boot error', e); }
+  }
+})();
+</script>
+</body>
+</html>
